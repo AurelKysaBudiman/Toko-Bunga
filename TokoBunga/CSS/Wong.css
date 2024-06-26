@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Kaph-Regular;
+}
+
+body{
+   /* background: -webkit-repeating-radial-gradient(white, black, red); */
+   font-family: sans-serif;
+   background-image: url(/images/bungabgbg\ \(1\).gif);
+   background-size: cover;
+}
+
+header, section#profile, section#sejarah, section#produk, section#keranjang, section#pembayaran, footer {
+    width: 800px;
+    margin: auto;
+    padding: 15px;
+}
+
+header, section#profile, section#sejarah, section#produk, section#keranjang, section#pembayaran{
+    background-color: #F6EEC9;
+    border-bottom: 2px solid black;
+}
+
+.quote {
+    text-align: center;
+    font-style: italic;
+    font-size: 16px;
+    margin-top: 20px; /* Atur sesuai keinginan Anda */
+    padding: 5px; /* Atur sesuai keinginan Anda */
+    background-color: #F6EEC9; /* Sesuaikan dengan warna latar belakang Anda */
+}
+
+header img {
+    width: 150px;
+    float: left;
+}
+
+section#sejarah img {
+    width: 250px;
+    float: left;
+    margin-right: 20px;
+}
+
+.kelas-sejarah {
+    width: 700px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+section#produk img{
+    margin-top: 20px;
+    width: 500px;
+    height: auto;
+    vertical-align: middle;
+    
+}
+
+section#produk {
+    text-align: center;
+}
+
+section#keranjang {
+    text-align: center;
+}
+
+header h1 {
+    float: left;
+    font-size: 62px;
+    margin-top: 30px;
+    margin-left: 20px;
+    width: 600px;
+    border-bottom: 5px solid red;
+    padding: 10px;
+    color: #006769;
+    text-align: center;
+}
+
+header h1 span {
+    color: #FFC470; /* Warna untuk teks di dalam <span> */
+}
+
+#profile-konten {
+    width: 700px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#profile-konten img{
+    width: 250px;
+    float: left;
+    margin-right: 20px;
+}
+
+#profile-konten #deskripsi-profile{
+    width: 400px;
+    float: left;
+}
+
+section#profile h1, section#sejarah h1, section#produk h1, section#keranjang h1, section#pembayaran h1{
+    text-align: center;
+    font-size: 32px;
+    background-color:#EE4E4E;
+}
+
+footer{
+    background-color: black;
+    text-align: center;
+}
+
+.fix-container{
+    clear: both;
+}
+
+section#produk h1 {
+    margin-bottom: 20px; /* Add some margin at the bottom of the heading */
+}
+
+section#pembayaran h1 {
+    margin-bottom: 20px; /* Add some margin at the bottom of the heading */
+}
+
+section#keranjang h1 {
+    margin-bottom: 20px; /* Add some margin at the bottom of the heading */
+}
+
+.list-produk table {
+    margin-top: 0; /* Override the default margin-top value */
+    margin-bottom: 20px; /* Add some margin at the bottom of the table */
+    text-align: justify;
+}
+
+.product-image {
+    height: 10px; /* Sesuaikan dengan tinggi yang diinginkan */
+    width: auto; /* Atau sesuaikan dengan lebar yang diinginkan */
+}
+
+#produk button {
+    background-color: #EE4E4E; /* Ini hanya sebagai nilai default jika nilai tidak diambil dari objek buyButtonText */
+}
+
+.searchbar{
+    margin-bottom: 5px;
+}
+
+
+/* .audioplayer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: blueviolet;
+    color: white;
+} */
+
+/* .audioplayer{
+    align-items: center;
+    width: 640px;
+    background-color: rgb(79, 197, 24);
+    display: grid;
+    grid-template-columns: 48px 1fr 48px;
+    grid-gap: 16px;
+    margin-left: 169px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 6px 115px;
+    position: relative;
+    border-radius: 64px;
+} */
+
+/* .control .current {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 16px;
+} */

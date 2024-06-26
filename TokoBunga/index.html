@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/Wong.css">
+    <title>Toko Bunga | NusaFlower</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="CSS/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #006769;">
+        <a class="navbar-brand" href="#"><i>NusaFlower</i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#profile">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div id="app">
+        <header>
+            <div class="judul">
+                <img src="images/logo.png" alt="Logo Umbrella"/>
+                <h1>Nusa<span>Flower</span></h1>
+            </div>
+            <div class="quote"><p>best <b><i>flower</i></b>, best <b><i>sellers</i></b></p></div>
+            <div class="fix-container"></div>
+        </header>
+
+        <section id="profile">
+            <h1>Profile</h1>
+            <div id="profile-konten">
+                <img src="images/ada icon.jpg" alt="Ada Wong">
+                <div id="deskripsi-profile">
+                    <li>Nama: Ada Wong</li>
+                    <li>Tanggal Lahir: - 1974</li>
+                    <li>Ras: Cina-Amerika</li>
+                    <li>Pekerjaan: Mata-Mata</li>
+                    <li>Gender: Wanita</li>
+                    <li>Tipe Darah: AB</li>
+                    <li>Tinggi Badan: 170 cm</li>
+                    <li>Status: Hidup</li>
+                </div>
+                <div class="fix-container"></div>
+            </div>
+        </section>
+
+        <section id="sejarah">
+            <h1>Latar Belakang</h1>
+            <div class="kelas-sejarah">
+                <img src="images/spy.gif" alt="Ada Mata-Mata">
+                <p>Kehidupannya adalah sebuah misteri. Identitas kependudukannya tidak diketahui, nama lahirnya juga tidak diketahui. Sumber dari akun Ada Wong, dia lahir pada tahun 1974 dari keluarga kaya orang Cina-Vietnam di distrik Cho Lon dari Saigon dalam bulan terakhir perang Vietnam. Ketika dia berumur tiga tahun, Ada Wong menjual aset rumah yang tersisa kepada pasar gelap untuk meninggalkan USA, tapi mereka diliciki sehingga berhasil selamat tanpa uang sepeserpun. Tetapi, kebenaran data ini masih dipertanyakan keasliannya karena ternyata Ada Wong membuat cerita ini untuk mengetes Leon S. Kennedy.</p>
+            </div>
+        </section>
+
+        <section id="produk">
+            <h1>PRODUK KAMI</h1>
+            <div class="searchbar">
+            <input class="form-control mr-sm-2" type="search" placeholder="Silakan cari apa yang dicari" aria-label="Search" v-model="searchTerm"></div>
+            <div class="list-produk">
+                <table border="2">
+                    <tr bgcolor="#A1DD70">
+                        <th>Stok</th>
+                        <th>Gambar</th>
+                        <th>Nama Produk</th>
+                        <th>Detail</th>
+                        <th>Harga</th>
+                        <th>Opsi</th>
+                    </tr>
+                    <tr v-for="produk in filteredListproduk" :key="produk.id">
+                        <td>{{ produk.stok }}</td>
+                        <td><img :src="produk.img" alt="Produk" :style="{ height: produk.height, width: produk.width }"></td>
+                        <td>{{ produk.nama }}</td>
+                        <td>{{ produk.detail }}</td>
+                        <td>{{ produk.harga }}</td>
+                        <td><button @click="addToCart(produk)" :style="{ 'background-color': buyButtonText[1]['background-color'] || '#EE4E4E' }">
+                            {{ buyButtonText[0] }}
+                        </button></td>
+                    </tr>
+                </table>
+            </div>
+        </section> 
+
+        <section id="keranjang">
+            <h1>KERANJANG</h1>
+            <div class="list-keranjang">
+                <table border="2">
+                    <tr bgcolor="#A1DD70">
+                        <th>Stok</th>
+                        <th>Gambar</th>
+                        <th>Nama Produk</th>
+                        <th>Detail</th>
+                        <th>Harga</th>
+                        <th>Jumlah</th>
+                        <th>Opsi</th>
+                    </tr>
+                    <tr v-for="(item, index) in cartItems" :key="item.id">
+                        <td>{{ item.stok }}</td>
+                        <td><img :src="item.img" :style="{ height: item.height, width: item.width }" alt="Produk di Keranjang"></td>
+                        <td>{{ item.nama }}</td>
+                        <td><button @click="toggleService(item)">
+                            {{ item.serviceBouquet ? 'Hapus service bouquet' : 'Tambah service bouquet (+Rp. 25,000)' }}
+                        </button>
+                        <div v-if="item.serviceBouquet">
+                            <p>Service bouquet telah ditambahkan (+Rp. 25,000)</p>
+                        </div>
+                        <div v-else>
+                            <p>Service bouquet tidak digunakan</p>
+                        </div>
+                        </td>
+                        <td>{{ item.harga }}</td>
+                        <td>{{ item.jumlah }}</td>
+                        <td>
+                            <button @click="removeFromCart(index)">Kurangi satu</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        
+
+        <section id="pembayaran">
+            <h1>Pembayaran</h1>
+            <div class="total">
+                <div class="total-item">
+                    <label>Sub Total: Rp.</label>
+                    <span>{{ subTotal.toFixed(0) }}</span>
+                </div>
+                <div class="total-item">
+                    <label>Diskon:</label>
+                    <input type="number" v-model.number="diskon"> %
+                    <span>= Rp. {{ diskonAmount.toFixed(0) }}</span>
+                </div>
+                <div class="total-item">
+                    <label>Total Harga: Rp.</label>
+                    <span>{{ totalHarga.toFixed(0) }}</span>
+                </div>
+                <div class="total-item">
+                    <label>Bayar: Rp.</label>
+                    <input type="number" v-model.number="bayar">
+                </div>
+                <div class="total-item">
+                    <label>Kembalian: Rp.</label>
+                    <span>{{ kembalian.toFixed(0) }}</span>
+                </div>
+                <div class="total-item">
+                    <button @click="prosesPembayaran">Bayar</button>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <a href="https://residentevil.fandom.com/wiki/Ada" rel="noopener" target="_blank" style="color: gold;">REFERENSI</a>
+        </footer>
+    </div>
+        
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                cartItems: [],
+                buyButtonText: ["Masukkan ke keranjang", { "background-color": "#EE4E4E" }],
+                listproduk: [
+                    { id: 1, stok: 10, img: 'images/bunga-melati.png', nama: 'Bunga Melati', detail: ' bunga melati diketahui melambangkan kesucian, keanggunan dalam kesederhanaan, dan ketulusan. Selain itu, bunga melati putih dijuluki puspa bangsa dan dijadikan sebagai simbol nasional karena mengandung arti suci, anggun, dan tulus.', harga: 5000, height: '100px', width: 'auto' },
+                    { id: 2, stok: 10, img: 'images/bunga1-mawar-removebg-preview.png', nama: 'Bunga Mawar', detail: 'Mawar adalah bunga yang indah.', harga: 7000, height: '100px', width: 'auto' },
+                    { id: 3, stok: 10, img: 'images/bunga4-tulip_-removebg-preview.png', nama: 'Bunga Tulip', detail: 'Tulip adalah bunga yang elegan.', harga: 6000, height: '100px', width: 'auto' },
+                ],
+                diskon: 0,
+                bayar: 0,
+                searchTerm: ''
+            },
+            methods: {
+                addToCart: function (product) {
+                    const existingItem = this.cartItems.find(item => item.id === product.id);
+                    if (existingItem) {
+                        if (existingItem.stok > 0) {
+                            existingItem.jumlah++;
+                            existingItem.stok--; // Kurangi stok
+                        } else {
+                            alert('Stok habis!');
+                        }
+                    } else {
+                        const newItem = {
+                            ...product,
+                            jumlah: 1,
+                            height: product.height,
+                            width: product.width,
+                            stok: product.stok - 1 // Kurangi stok saat menambahkan item baru
+                        };
+                        this.cartItems.push(newItem);
+                    }
+                },
+                removeFromCart: function (index) {
+                    const item = this.cartItems[index];
+                    if (item.jumlah > 1) {
+                        item.jumlah--;
+                        item.stok++; // Tambahkan stok saat mengurangi jumlah item
+                    } else {
+                        this.cartItems.splice(index, 1);
+                        item.stok++; // Tambahkan stok saat menghapus item dari keranjang
+                    }
+                },
+
+                toggleService: function (item) {
+                    if (item.serviceBouquet) {
+                        // Jika service bouquet sudah ditambahkan, kurangi harga
+                        item.harga -= 25000;
+                        item.serviceBouquet = false;
+                    } else {
+                        // Jika service bouquet belum ditambahkan, tambahkan harga
+                        item.harga += 25000;
+                        item.serviceBouquet = true;
+                    }
+                },
+                
+                prosesPembayaran: function () {
+                    if (this.bayar < this.totalHarga) {
+                        alert('Pembayaran kurang!');
+                    } else {
+                        alert('Transaksi berhasil!');
+                        // Atur ulang stok saat transaksi berhasil
+                        this.cartItems.forEach(item => {
+                            const product = this.listproduk.find(prod => prod.id === item.id);
+                            if (product) {
+                                product.stok -= item.jumlah;
+                            }
+                        });
+                        // Reset keranjang dan pembayaran
+                        this.cartItems = [];
+                        this.diskon = 0;
+                        this.bayar = 0;
+                    }
+                }
+            },
+            computed: {
+                subTotal() {
+                    return this.cartItems.reduce((sum, item) => sum + (item.harga * item.jumlah), 0);
+                },
+                diskonAmount() {
+                    return this.subTotal * (this.diskon / 100);
+                },
+                totalHarga() {
+                    return this.subTotal - this.diskonAmount;
+                },
+                kembalian() {
+                    return this.bayar - this.totalHarga;
+                }, 
+
+                filteredListproduk() {
+                    return this.listproduk.filter(produk =>
+                        produk.nama.toLowerCase().includes(this.searchTerm.toLowerCase())
+                    );
+                },
+            }
+        });
+    </script>
+        
+</body>
+</html>
